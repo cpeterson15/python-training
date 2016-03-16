@@ -12,6 +12,23 @@ def enter_data():
     c.execute("INSERT INTO example VALUES('Python', '3.4', 'Expert')")
     conn.commit()
 
-enter_data()
+def enter_dynamic_data():
+    lang = input("What language? ")
+    version = float(input("What version? "))
+    skill = input("What skill level? ")
+
+    c.execute("INSERT INTO example (Language, Version, Skill) VALUES (?,?,?)", (lang, version, skill))
+
+    conn.commit()
+
+def read_from_database():
+    what_skill = input("What skill level are you looking for? ")
+
+    sql = "SELECT * FROM example WHERE Skill == ?"
+
+    for row in c.execute(sql, [what_skill]):
+        print(row)
+
+read_from_database()
 
 conn.close()
