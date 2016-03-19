@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block body %}
+    <button type="button" class="btn btn-{{ button_type }}">Action</button>
+    <h4>{{ name }}</h4>
+    <h5>Python versions: </h5>
+    {% for ver in example_list %}
+        <p>{{ ver }}</p>
+    {% endfor %}
+
+{% endblock %}
